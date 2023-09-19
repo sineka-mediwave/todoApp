@@ -9,5 +9,20 @@
   </head>
   <body>
     <h1>Todo App</h1>
+    <div class="Body-container">
+      <form id="todoForm">
+        <input
+          type="text"
+          id="inputTask"
+          placeholder="Enter things to do"
+          onkeyup="enableBtn()"
+          required
+        />
+        <button type="submit" id="addBtn">Add</button>
+      </form>
+      <ul id="taskList">
+        <div id="taskDone"></div>
+      </ul>
+    </div>
   </body>
 </html>
