@@ -18,7 +18,7 @@ h1 {
   color: #7c9d96;
 }
 
-ul li {
+li {
   padding: 8px 20px;
   font-size: 18px;
   display: flex;
@@ -67,6 +67,6 @@ ul li {
   margin-right: 16px;
 }
 
-#taskDone {
-    border-top: 1px solid #fff;
+#taskList {
+    border-bottom: 1px solid #fff;
 }

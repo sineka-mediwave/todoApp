@@ -36,11 +36,13 @@ function addTodoList() {
 function addTodo(task) {
   todoList.push(task);
   saveTodosInMemory();
+  form.reset();
 }
 
 function saveTodosInMemory() {
   console.log("saving in memory");
   localStorage.setItem("todosInMemory", JSON.stringify(todoList));
+  updateUi();
 }
 
 // Function to get data from localStorage
@@ -50,13 +52,16 @@ function getFromLocalSorage() {
 }
 
 function updateUi() {
-  //   clearApp();
+  clearUi();
   for (let i = 0; i < todoList.length; i++) {
     const listItem = displayTask(todoList[i]);
     list.appendChild(listItem);
   }
 }
 
+function clearUi() {
+  list.innerHTML = "";
+}
 function displayTask(listItem) {
   let listDiv = document.createElement("li");
   let text = document.createElement("lable");
@@ -70,14 +75,46 @@ function displayTask(listItem) {
 
   //   adding fucntion for checkbox
   check.addEventListener("change", function () {
-    insertBelow(listItem["id"]);
     if (check.checked) {
       text.style.textDecoration = "line-through";
+      let parentElement = document.querySelector("#taskDone");
+      parentElement.appendChild(listDiv);
+      todoList.complete = true;
     } else {
       text.style.textDecoration = "none";
+      list.appendChild(listDiv);
+      todoList.complete = false;
     }
   });
+
+  //   if (listItem.complete) {
+  //     console.log("complete");
+  //   }
   return listDiv;
 }
 
-function insertBelow(itemId) {}
+function check() {
+  if (todoList.complete) {
+    console.log("complete");
+  } else {
+    console.log("uncomplete");
+  }
+}
+
+// function insertBelow(itemId) {
+//   const completedTask = todoList.findIndex((task) => task.id == itemId);
+//   if (completedTask != -1) {
+//     todoList[completedTask]["complete"] = true;
+//     console.log("completefn");
+//     let parentElement = document.getElementById("#taskDone");
+//     // Get the parent's first child
+//     let theFirstChild = parentElement.firstChild;
+
+//     // Create a new element
+//     //let completedTask = document.createElement("div");
+
+//     // Insert the new element before the first child
+//     parentElement.insertBefore(completedTask, theFirstChild);
+//     updateUi();
+//   }
+// }
