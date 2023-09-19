@@ -23,3 +23,7 @@ function enableBtn() {
 }
 
 ```
+
+## checkbox function
+
+while checkBox is checked, line-through the text and while unchecking it display the text. save the task in the local storage.
