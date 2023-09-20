@@ -52,6 +52,7 @@ function getFromLocalSorage() {
 
 function updateUi() {
   clearUi();
+  sortArray();
   for (let i = 0; i < todoList.length; i++) {
     const listItem = displayTask(todoList[i]);
     list.appendChild(listItem);
@@ -121,4 +122,10 @@ function uncomplete(itemId) {
     todoList[completedTask]["complete"] = false;
   }
   saveTodosInMemory();
+}
+
+function sortArray() {
+  todoList.sort((a, b) =>
+    a.complete === b.complete ? 0 : a.complete ? 1 : -1
+  );
 }
